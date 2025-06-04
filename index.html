@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Pelech Media</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Pelech Media</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>PELECH MEDIA</h1>
+            <p>Capturing all of life's moments</p>
+            <a href="#gallery" class="cta-button">VIEW GALLERY</a>
+        </div>
+    </section>
+
+    <section class="gallery-section" id="gallery">
+        <!-- Featured Work Section -->
+        <div class="featured-section">
+            <h3 class="featured-title">Featured Work</h3>
+            <div class="featured-grid" id="galleryGrid">
+                <!-- Images will be dynamically loaded here -->
+            </div>
+            <div class="gallery-controls">
+                <button class="control-btn active" id="pauseBtn">PAUSE</button>
+                <button class="control-btn" id="nextBtn">NEXT</button>
+                <button class="control-btn" id="prevBtn">PREVIOUS</button>
+            </div>
+        </div>
+
+        <h2 class="section-title">PORTFOLIO</h2>
+
+        <!-- Photography Categories -->
+        <div class="categories-grid">
+            <div class="category-card" data-category="sports">
+                <div class="category-image">
+                    <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=600&h=400&fit=crop"
+                        alt="Sports Photography" loading="lazy">
+                </div>
+                <div class="category-content">
+                    <h3><a href="sports.html">Sports Photography</a></h3>
+                    <p>Capturing the intensity, emotion, and peak moments of athletic competition</p>
+                    <span class="view-gallery">View Gallery →</span>
+                </div>
+            </div>
+
+            <div class="category-card" data-category="concerts">
+                <div class="category-image">
+                    <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=400&fit=crop"
+                        alt="Concert Photography" loading="lazy">
+                </div>
+                <div class="category-content">
+                    <h3><a href="concerts.html">Concert Photography</a></h3>
+                    <p>Live music energy, stage lighting, and the connection between artists and audience</p>
+                    <span class="view-gallery">View Gallery →</span>
+                </div>
+            </div>
+
+            <div class="category-card" data-category="nature">
+                <div class="category-image">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop"
+                        alt="Nature Photography" loading="lazy">
+                </div>
+                <div class="category-content">
+                    <h3><a href="nature.html">Nature Photography</a></h3>
+                    <p>Breathtaking landscapes, natural beauty, and the serene moments in the wild</p>
+                    <span class="view-gallery">View Gallery →</span>
+                </div>
+            </div>
+
+            <div class="category-card" data-category="animals">
+                <div class="category-image">
+                    <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=600&h=400&fit=crop"
+                        alt="Animal Photography" loading="lazy">
+                </div>
+                <div class="category-content">
+                    <h3><a href="animals.html">Animal Photography</a></h3>
+                    <p>Wildlife in their natural habitat, capturing personality and behavior</p>
+                    <span class="view-gallery">View Gallery →</span>
+                </div>
+            </div>
+
+            <div class="category-card" data-category="portraits">
+                <div class="category-image">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop&crop=face"
+                        alt="Portrait Photography" loading="lazy">
+                </div>
+                <div class="category-content">
+                    <h3><a href="portraits.html">Portrait Photography</a></h3>
+                    <p>Individual character, emotion, and the unique story each person tells</p>
+                    <span class="view-gallery">View Gallery →</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="#gallery">Gallery</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="copyright">
+                © 2025 Designed by Will Miles. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
