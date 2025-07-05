@@ -1,122 +1,181 @@
-// Sample image archive - replace with your actual images
-const imageArchive = [
-    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1444927714506-8492d94b5ba0?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1418065460487-3956ef847d1f?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1433838552652-f9a46b332c40?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1471115853179-bb1d604434e0?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1457269449834-928af64c684d?w=800&h=600&fit=crop'
-];
-
-let currentImageSet = 0;
-let isPlaying = true;
-let rotationInterval;
-const imagesPerPage = 10;
-
-function createGalleryItem(imageSrc, index) {
-    const item = document.createElement('div');
-    item.className = 'gallery-item';
-    item.innerHTML = `<img src="${imageSrc}" alt="Photography ${index + 1}" loading="lazy">`;
-    return item;
-}
-
-function displayImages(startIndex = 0) {
-    const galleryGrid = document.getElementById('galleryGrid');
-    galleryGrid.innerHTML = '';
-
-    const imagesPerPage = 4; // Changed to 4 for single row
-    const endIndex = Math.min(startIndex + imagesPerPage, imageArchive.length);
-
-    for (let i = startIndex; i < endIndex; i++) {
-        const galleryItem = createGalleryItem(imageArchive[i], i);
-        galleryGrid.appendChild(galleryItem);
-
-        // Stagger the animations
-        setTimeout(() => {
-            galleryItem.classList.add('visible');
-        }, (i - startIndex) * 100);
-    }
-}
-
-function nextImageSet() {
-    const imagesPerPage = 4; // Changed to 4 for single row
-    const maxSets = Math.ceil(imageArchive.length / imagesPerPage);
-    currentImageSet = (currentImageSet + 1) % maxSets;
-    displayImages(currentImageSet * imagesPerPage);
-}
-
-function prevImageSet() {
-    const imagesPerPage = 4; // Changed to 4 for single row
-    const maxSets = Math.ceil(imageArchive.length / imagesPerPage);
-    currentImageSet = currentImageSet === 0 ? maxSets - 1 : currentImageSet - 1;
-    displayImages(currentImageSet * imagesPerPage);
-}
-
-function startRotation() {
-    if (rotationInterval) clearInterval(rotationInterval);
-    rotationInterval = setInterval(nextImageSet, 4000);
-}
-
-function stopRotation() {
-    if (rotationInterval) {
-        clearInterval(rotationInterval);
-        rotationInterval = null;
-    }
-}
-
-function togglePlayPause() {
-    const pauseBtn = document.getElementById('pauseBtn');
-    if (isPlaying) {
-        stopRotation();
-        pauseBtn.textContent = 'PLAY';
-        pauseBtn.classList.remove('active');
-        isPlaying = false;
-    } else {
-        startRotation();
-        pauseBtn.textContent = 'PAUSE';
-        pauseBtn.classList.add('active');
-        isPlaying = true;
-    }
-}
-
-// Event listeners
+// Main website functionality
 document.addEventListener('DOMContentLoaded', function () {
-    // Initialize gallery
-    displayImages();
-    startRotation();
+    // Initialize gallery animations
+    initializeGalleryAnimations();
 
-    // Button event listeners
-    document.getElementById('pauseBtn').addEventListener('click', togglePlayPause);
-    document.getElementById('nextBtn').addEventListener('click', () => {
-        nextImageSet();
+    // Initialize featured gallery slideshow
+    initializeFeaturedGallery();
+
+    // Load dynamic category previews from Google Drive
+    loadCategoryPreviews();
+
+    // Initialize navigation
+    initializeNavigation();
+});
+
+function initializeGalleryAnimations() {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '50px'
+    });
+
+    galleryItems.forEach(item => {
+        observer.observe(item);
+    });
+}
+
+function initializeFeaturedGallery() {
+    // Featured gallery images - you can replace these with your actual featured images
+    const featuredImages = [
+        'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop'
+    ];
+
+    const galleryGrid = document.getElementById('galleryGrid');
+    const pauseBtn = document.getElementById('pauseBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+
+    if (!galleryGrid || !pauseBtn || !nextBtn || !prevBtn) {
+        return; // Exit if elements don't exist (not on index page)
+    }
+
+    let currentIndex = 0;
+    let isPlaying = true;
+    let slideInterval;
+
+    // Create gallery items
+    function createGalleryItems(startIndex = 0) {
+        galleryGrid.innerHTML = '';
+
+        // Show 4 images at a time
+        for (let i = 0; i < 4; i++) {
+            const imageIndex = (startIndex + i) % featuredImages.length;
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+            galleryItem.innerHTML = `<img src="${featuredImages[imageIndex]}" alt="Featured Work ${imageIndex + 1}" loading="lazy">`;
+            galleryGrid.appendChild(galleryItem);
+        }
+
+        // Trigger animation
+        setTimeout(() => {
+            galleryGrid.querySelectorAll('.gallery-item').forEach(item => {
+                item.classList.add('visible');
+            });
+        }, 100);
+    }
+
+    // Auto-advance slideshow
+    function startSlideshow() {
+        if (slideInterval) clearInterval(slideInterval);
+        slideInterval = setInterval(() => {
+            if (isPlaying) {
+                currentIndex = (currentIndex + 4) % featuredImages.length;
+                createGalleryItems(currentIndex);
+            }
+        }, 4000); // Change every 4 seconds
+    }
+
+    // Initialize with first set of images
+    createGalleryItems(currentIndex);
+    startSlideshow();
+
+    // Control button event listeners
+    pauseBtn.addEventListener('click', function () {
+        isPlaying = !isPlaying;
+        this.textContent = isPlaying ? 'PAUSE' : 'PLAY';
+        this.classList.toggle('active', isPlaying);
+
         if (isPlaying) {
-            stopRotation();
-            startRotation(); // Restart the timer
+            startSlideshow();
+        } else {
+            clearInterval(slideInterval);
         }
     });
-    document.getElementById('prevBtn').addEventListener('click', () => {
-        prevImageSet();
+
+    nextBtn.addEventListener('click', function () {
+        currentIndex = (currentIndex + 4) % featuredImages.length;
+        createGalleryItems(currentIndex);
+
+        // Reset the slideshow timer
         if (isPlaying) {
-            stopRotation();
-            startRotation(); // Restart the timer
+            startSlideshow();
         }
     });
 
-    // Smooth scrolling for navigation links
+    prevBtn.addEventListener('click', function () {
+        currentIndex = (currentIndex - 4 + featuredImages.length) % featuredImages.length;
+        createGalleryItems(currentIndex);
+
+        // Reset the slideshow timer
+        if (isPlaying) {
+            startSlideshow();
+        }
+    });
+}
+
+function loadCategoryPreviews() {
+    // Google Drive folder IDs - REPLACE THESE WITH YOUR ACTUAL FOLDER IDs
+    const categoryFolders = {
+        'sports': 'YOUR_SPORTS_FOLDER_ID',        // Replace with your Sports folder ID
+        'concerts': 'YOUR_CONCERTS_FOLDER_ID',    // Replace with your Concerts folder ID
+        'nature': 'YOUR_NATURE_FOLDER_ID',        // Replace with your Nature folder ID
+        'architectural': 'YOUR_ARCHITECTURAL_FOLDER_ID', // Replace with your Architectural folder ID
+        'animals': 'YOUR_ANIMALS_FOLDER_ID',      // Replace with your Animals folder ID
+        'portraits': 'YOUR_PORTRAITS_FOLDER_ID'   // Replace with your Portraits folder ID
+    };
+
+    // Update category card images with latest from Google Drive
+    Object.keys(categoryFolders).forEach(category => {
+        updateCategoryPreview(category, categoryFolders[category]);
+    });
+}
+
+async function updateCategoryPreview(category, folderId) {
+    try {
+        // For now, we'll use placeholder logic
+        // In production, this would fetch from Google Drive API
+
+        if (!folderId || folderId.startsWith('YOUR_')) {
+            // Keep existing placeholder images
+            return;
+        }
+
+        // TODO: Implement Google Drive API call
+        // const latestImage = await getLatestImageFromDrive(folderId);
+        // updateCategoryCardImage(category, latestImage);
+
+    } catch (error) {
+        console.error(`Error updating ${category} preview:`, error);
+    }
+}
+
+function updateCategoryCardImage(category, imageUrl) {
+    const categoryCard = document.querySelector(`[data-category="${category}"]`);
+    if (categoryCard) {
+        const img = categoryCard.querySelector('.category-image img');
+        if (img) {
+            img.src = imageUrl;
+        }
+    }
+}
+
+function initializeNavigation() {
+    // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -130,22 +189,56 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Navigation background on scroll
-    window.addEventListener('scroll', () => {
-        const nav = document.querySelector('nav');
-        if (window.scrollY > 100) {
-            nav.style.background = 'rgba(10, 10, 10, 0.98)';
-        } else {
-            nav.style.background = 'rgba(10, 10, 10, 0.95)';
-        }
-    });
+    // Navigation active state
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
-    // Pause rotation when page is not visible
-    document.addEventListener('visibilitychange', () => {
-        if (document.hidden && isPlaying) {
-            stopRotation();
-        } else if (!document.hidden && isPlaying) {
-            startRotation();
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+            link.classList.add('active');
         }
     });
-});
+}
+
+// Legacy gallery controls for other pages
+const controls = document.querySelectorAll('.control-btn[data-filter]');
+const galleryItems = document.querySelectorAll('.gallery-item');
+
+if (controls.length > 0) {
+    controls.forEach(control => {
+        control.addEventListener('click', function () {
+            const filter = this.getAttribute('data-filter');
+
+            // Update active control
+            controls.forEach(c => c.classList.remove('active'));
+            this.classList.add('active');
+
+            // Filter gallery items
+            galleryItems.forEach(item => {
+                if (filter === 'all' || item.classList.contains(filter)) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.classList.add('visible');
+                    }, 100);
+                } else {
+                    item.classList.remove('visible');
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
+}
+
+// Function to manually refresh gallery from Google Drive
+window.refreshGalleryFromDrive = function () {
+    loadCategoryPreviews();
+
+    // If we're on a gallery page, refresh that too
+    if (document.querySelector('.category-gallery')) {
+        const gallery = new DriveGallery();
+        gallery.initializePage();
+    }
+};
