@@ -59,13 +59,35 @@
     position: relative;
 }
 
+/* FIXED IMAGE STYLES - This is the main fix */
 .about-image img {
     width: 100%;
-    height: 500px;
+    height: auto;           /* Changed from fixed 500px height */
+    object-fit: contain;    /* Changed from 'cover' to 'contain' to show full image */
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    max-height: 600px;      /* Optional: prevents image from getting too tall */
+}
+
+/* Alternative option - uncomment if you prefer a specific aspect ratio:
+.about-image img {
+    width: 100%;
+    aspect-ratio: 3/4;
     object-fit: cover;
+    object-position: center top;
     border-radius: 8px;
     transition: transform 0.3s ease;
 }
+*/
+
+/* Alternative option - uncomment for natural image proportions:
+.about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+*/
 
 .about-image:hover img {
     transform: scale(1.05);
@@ -170,7 +192,7 @@
     }
 
     .about-image img {
-        height: 300px;
+        max-height: 400px;  /* Smaller max height on mobile */
     }
 
     .skills-grid,
