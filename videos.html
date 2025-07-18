@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Gallery | Pelech Media</title>
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="gallery.css">
+    <link rel="stylesheet" href="videos.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Pelech Media</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#gallery" class="active">Gallery</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-hero videos-hero"
+        style="background-image: linear-gradient(135deg, rgba(10, 10, 10, 0.7) 0%, rgba(26, 26, 26, 0.7) 100%), url('images/video-hero.jpg'); background-size: cover; background-position: center center; background-repeat: no-repeat;">
+        <div class="hero-content">
+            <h1>VIDEO GALLERY</h1>
+            <p>Bringing stories to life through cinematic storytelling and motion</p>
+        </div>
+    </section>
+
+    <section class="category-gallery">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / <a href="index.html#gallery">Gallery</a> / <span>Video Gallery</span>
+            </div>
+
+            <div class="category-description">
+                <p>From dynamic sports highlights to cinematic storytelling, my video work captures motion, emotion, and
+                    narrative. Each piece is crafted to engage viewers and bring stories to life through compelling
+                    visual storytelling and professional production quality.</p>
+            </div>
+
+            <div class="video-categories">
+                <div class="category-filter">
+                    <button class="filter-btn active" data-category="all">All Videos</button>
+                    <button class="filter-btn" data-category="sports">Sports</button>
+                    <button class="filter-btn" data-category="documentary">Documentary</button>
+                    <button class="filter-btn" data-category="commercial">Commercial</button>
+                    <button class="filter-btn" data-category="event">Events</button>
+                </div>
+            </div>
+
+            <div class="video-grid" id="videoGallery">
+                <!-- Video 1 - Sports -->
+                <div class="video-item" data-category="sports">
+                    <div class="video-thumbnail">
+                        <video preload="metadata" poster="images/video-thumbnails/sports1-thumb.jpg">
+                            <source src="videos/sports-highlight-1.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="play-overlay">
+                            <div class="play-button">
+                                <svg width="60" height="60" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 5v14l11-7z" fill="currentColor" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="video-duration">2:45</div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Match Highlights - Stalybridge Celtic</h3>
+                        <p>Dynamic sports highlight reel showcasing key moments from an exciting match</p>
+                        <span class="video-category">Sports</span>
+                    </div>
+                </div>
+
+                <!-- Video 2 - Documentary -->
+                <div class="video-item" data-category="documentary">
+                    <div class="video-thumbnail">
+                        <video preload="metadata" poster="images/video-thumbnails/doc1-thumb.jpg">
+                            <source src="videos/documentary-1.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="play-overlay">
+                            <div class="play-button">
+                                <svg width="60" height="60" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 5v14l11-7z" fill="currentColor" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="video-duration">8:32</div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Behind the Scenes</h3>
+                        <p>An intimate look at the preparation and dedication behind athletic performance</p>
+                        <span class="video-category">Documentary</span>
+                    </div>
+                </div>
+
+                <!-- Video 3 - Commercial -->
+                <div class="video-item" data-category="commercial">
+                    <div class="video-thumbnail">
+                        <video preload="metadata" poster="images/video-thumbnails/commercial1-thumb.jpg">
+                            <source src="videos/commercial-1.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="play-overlay">
+                            <div class="play-button">
+                                <svg width="60" height="60" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 5v14l11-7z" fill="currentColor" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="video-duration">1:30</div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Brand Showcase</h3>
+                        <p>Professional commercial video highlighting product features and brand identity</p>
+                        <span class="video-category">Commercial</span>
+                    </div>
+                </div>
+
+                <!-- Video 4 - Event -->
+                <div class="video-item" data-category="event">
+                    <div class="video-thumbnail">
+                        <video preload="metadata" poster="images/video-thumbnails/event1-thumb.jpg">
+                            <source src="videos/event-coverage-1.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="play-overlay">
+                            <div class="play-button">
+                                <svg width="60" height="60" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 5v14l11-7z" fill="currentColor" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="video-duration">4:15</div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Concert Coverage</h3>
+                        <p>Live event documentation capturing the energy and atmosphere of musical performance</p>
+                        <span class="video-category">Events</span>
+                    </div>
+                </div>
+
+                <!-- Video 5 - Sports -->
+                <div class="video-item" data-category="sports">
+                    <div class="video-thumbnail">
+                        <video preload="metadata" poster="images/video-thumbnails/sports2-thumb.jpg">
+                            <source src="videos/sports-interview-1.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="play-overlay">
+                            <div class="play-button">
+                                <svg width="60" height="60" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 5v14l11-7z" fill="currentColor" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="video-duration">3:20</div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Player Interview</h3>
+                        <p>In-depth conversation with key players about strategy and team dynamics</p>
+                        <span class="video-category">Sports</span>
+                    </div>
+                </div>
+
+                <!-- Video 6 - Documentary -->
+                <div class="video-item" data-category="documentary">
+                    <div class="video-thumbnail">
+                        <video preload="metadata" poster="images/video-thumbnails/doc2-thumb.jpg">
+                            <source src="videos/documentary-2.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="play-overlay">
+                            <div class="play-button">
+                                <svg width="60" height="60" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 5v14l11-7z" fill="currentColor" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="video-duration">12:48</div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Local Heritage</h3>
+                        <p>Exploring the rich history and cultural significance of our local community</p>
+                        <span class="video-category">Documentary</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-navigation">
+                <a href="architectural-gallery.html" class="nav-link prev">← Architectural Photography</a>
+                <a href="index.html#gallery" class="nav-link home">Back to Gallery</a>
+                <a href="nature.html" class="nav-link next">Nature Photography →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-video">
+                <video id="modalVideo" controls>
+                    <source src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="modal-info">
+                <h3 id="modalTitle"></h3>
+                <p id="modalDescription"></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#gallery">Gallery</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="copyright">
+                © 2025 Designed by Will Miles. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="videos.js"></script>
+</body>
+
+</html>
