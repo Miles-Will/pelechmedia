@@ -1,5 +1,13 @@
 // Contact form functionality
 document.addEventListener('DOMContentLoaded', function () {
+    // Initialize form functionality
+    initializeContactForm();
+
+    // Initialize date field toggle
+    setupDateFieldToggle();
+});
+
+function initializeContactForm() {
     const contactForm = document.getElementById('contactForm');
 
     if (contactForm) {
@@ -26,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
             submitForm(data);
         });
     }
-});
+}
 
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -80,39 +88,51 @@ function showMessage(message, type) {
             messageEl.remove();
         }
     }, 5000);
-}// Contact form functionality
-document.addEventListener('DOMContentLoaded', function () {
-    const contactForm = document.getElementById('contactForm');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            // Get form data
-            const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData);
-
-            // Basic validation
-            if (!data.name || !data.email || !data.message) {
-                showMessage('Please fill in all required fields.', 'error');
-                return;
-            }
-
-            // Email validation
-            if (!isValidEmail(data.email)) {
-                showMessage('Please enter a valid email address.', 'error');
-                return;
-            }
-
-            // Simulate form submission (replace with actual submission logic)
-            submitForm(data);
-        });
-    }
-});
-
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
 }
 
-function submitForm(data)
+// Date field toggle functionality
+function setupDateFieldToggle() {
+    const dateInput = document.getElementById('date');
+
+    if (!dateInput) return;
+
+    let isOpen = false;
+
+    // Enhanced click handler
+    dateInput.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        if (!isOpen) {
+            // Open the calendar
+            this.focus();
+            if (this.showPicker) {
+                this.showPicker(); // Chrome 99+, Firefox 101+
+            }
+            isOpen = true;
+        } else {
+            // Close the calendar
+            this.blur();
+            isOpen = false;
+        }
+    });
+
+    // Reset state when calendar closes naturally
+    dateInput.addEventListener('blur', function () {
+        setTimeout(() => {
+            isOpen = false;
+        }, 100);
+    });
+
+    // Handle keyboard interactions
+    dateInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            this.blur();
+            isOpen = false;
+        }
+    });
+
+    // Handle change event to close calendar after selection
+    dateInput.addEventListener('change', function () {
+        isOpen = false;
+    });
+}
