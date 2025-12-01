@@ -35,25 +35,156 @@
     </nav>
 
     <section class="hero" id="home">
-        <img src="images/CP.jpeg" alt="" class="hero-background-image">
+        <img src="CP.jpeg" alt="Portrait of a couple" class="hero-background-image" loading="eager"
+            srcset="cp-mobile.jpeg 800w, CP.jpeg 1400w" sizes="(max-width: 768px) 100vw, 100vw">
+        <div class="hero-glow"></div>
+        <div class="hero-rings"></div>
         <div class="hero-content">
-            <h1>PELECH MEDIA</h1>
-            <p>Capturing all of life's moments</p>
-            <a href="portfolio.html" class="cta-button">VIEW PORTFOLIO</a>
+            <div class="hero-columns">
+                <div class="hero-copy">
+                    <div class="hero-eyebrow">PELECH MEDIA</div>
+                    <h1>Photography that turns fleeting moments into cinematic stories.</h1>
+                    <p>From intimate weddings to architectural marvels, Pelech Media crafts imagery that feels alive,
+                        soulful, and impossible to forget.</p>
+                    <div class="hero-ctas">
+                        <a href="portfolio.html" class="cta-button primary">View portfolio</a>
+                        <a href="contact.html" class="cta-button ghost">Book a session</a>
+                    </div>
+                    <div class="hero-metrics">
+                        <div class="metric-card">
+                            <span class="metric-value">10+</span>
+                            <span class="metric-label">Years capturing stories</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">500+</span>
+                            <span class="metric-label">Events & sessions</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">4K</span>
+                            <span class="metric-label">Delivery ready</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-preview">
+                    <div class="preview-header">
+                        <span class="glow-dot"></span>
+                        Signature sets
+                        <span class="badge">New edits</span>
+                    </div>
+                    <div class="preview-grid">
+                        <div class="preview-card" style="--preview:url('CP.jpeg')">
+                            <div class="preview-label">Wedding glow</div>
+                        </div>
+                        <div class="preview-card" style="--preview:url('about-image.JPG')">
+                            <div class="preview-label">Portrait focus</div>
+                        </div>
+                        <div class="preview-card tall" style="--preview:url('architect.JPG')">
+                            <div class="preview-label">Architectural lines</div>
+                        </div>
+                        <div class="preview-card" style="--preview:url('cp-mobile.jpeg')">
+                            <div class="preview-label">Candid warmth</div>
+                        </div>
+                    </div>
+                    <p class="preview-caption">Layered color grades, cinematic contrast, and crisp detail curated for every story.</p>
+                </div>
+            </div>
+        </div>
+        <div class="hero-pill hero-pill-left">
+            <p>Weddings • Portraits • Concerts</p>
+        </div>
+        <div class="hero-pill hero-pill-right">
+            <p>Architecture • Sports • Nature</p>
+        </div>
+        <div class="scroll-cue">Scroll for the story ↓</div>
+    </section>
+
+    <section class="immersive-intro">
+        <div class="section-heading">
+            <p class="eyebrow">Signature craft</p>
+            <h3>Images designed to make people stop and stare.</h3>
+            <p class="lead">Each shoot is approached like a bespoke film: thoughtful pacing, cinematic lighting, and
+                crisp details that hold up on a billboard or a phone screen.</p>
+        </div>
+        <div class="pillar-grid">
+            <div class="pillar-card">
+                <div class="icon-burst">⚡</div>
+                <h4>Bold first impressions</h4>
+                <p>Dynamic compositions that showcase movement, emotion, and the energy of the room.</p>
+            </div>
+            <div class="pillar-card">
+                <div class="icon-burst">🎨</div>
+                <h4>Curated color grades</h4>
+                <p>A handcrafted palette for every story—moody, luminous, or editorially clean.</p>
+            </div>
+            <div class="pillar-card">
+                <div class="icon-burst">🤝</div>
+                <h4>Guided experience</h4>
+                <p>Light direction and posing cues that help every subject feel confident on camera.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="signature-showcase">
+        <div class="section-heading compact">
+            <p class="eyebrow">Signature looks</p>
+            <h3>Choose a story to explore.</h3>
+            <p class="lead">A curated taste of the experiences Pelech Media crafts across genres.</p>
+        </div>
+        <div class="showcase-grid">
+            <a class="showcase-card" href="weddings.html" style="--bg:url('CP.jpeg')">
+                <div class="card-overlay"></div>
+                <div class="card-content">
+                    <p class="eyebrow">Wedding narratives</p>
+                    <h4>Emotion-first storytelling</h4>
+                    <span class="chip">View weddings</span>
+                </div>
+            </a>
+            <a class="showcase-card" href="portraits.html" style="--bg:url('about-image.JPG')">
+                <div class="card-overlay"></div>
+                <div class="card-content">
+                    <p class="eyebrow">Portraiture</p>
+                    <h4>Editorial polish with heart</h4>
+                    <span class="chip">View portraits</span>
+                </div>
+            </a>
+            <a class="showcase-card" href="architectural-gallery.html" style="--bg:url('architect.JPG')">
+                <div class="card-overlay"></div>
+                <div class="card-content">
+                    <p class="eyebrow">Architecture</p>
+                    <h4>Design-focused precision</h4>
+                    <span class="chip">See the lines</span>
+                </div>
+            </a>
         </div>
     </section>
 
     <section class="gallery-section" id="gallery">
-        <!-- Featured Work Section -->
+        <div class="section-heading">
+            <p class="eyebrow">Featured reel</p>
+            <h3>Fresh from the lens.</h3>
+            <p class="lead">A rotating set of favorites spanning events, portraits, and architectural commissions.</p>
+        </div>
         <div class="featured-section">
-            <h3 class="featured-title">Featured Work</h3>
             <div class="featured-grid" id="galleryGrid">
-                <!-- Images will be dynamically loaded here -->
+                <!-- Images dynamically loaded -->
             </div>
             <div class="gallery-controls">
-                <button class="control-btn active" id="pauseBtn">PAUSE</button>
-                <button class="control-btn" id="nextBtn">NEXT</button>
-                <button class="control-btn" id="prevBtn">PREVIOUS</button>
+                <button class="control-btn active" id="pauseBtn">Pause</button>
+                <button class="control-btn" id="nextBtn">Next</button>
+                <button class="control-btn" id="prevBtn">Previous</button>
+            </div>
+            <p class="gallery-footnote">Slow-paced transitions ensure every frame gets its own spotlight.</p>
+        </div>
+    </section>
+
+    <section class="testimonial-banner">
+        <div class="banner-content">
+            <p class="eyebrow">What clients feel</p>
+            <h3>“Will didn’t just capture moments—he built a visual narrative that matched our brand energy.”</h3>
+            <p class="lead">Tailored shoots, streamlined delivery, and a collaborative approach from planning to final edit.</p>
+            <div class="banner-actions">
+                <a href="contact.html" class="cta-button primary">Plan your shoot</a>
+                <a href="about.html" class="cta-button ghost">Meet the photographer</a>
             </div>
         </div>
     </section>
@@ -73,7 +204,6 @@
     </footer>
 
     <script src="script.js"></script>
-
 </body>
 
 </html>
