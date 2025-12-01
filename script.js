@@ -6,11 +6,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize featured gallery slideshow
     initializeFeaturedGallery();
 
-    // Load dynamic category previews from Google Drive
-    loadCategoryPreviews();
-
     // Initialize navigation
     initializeNavigation();
+
+    // Add mobile-specific optimizations
+    initializeMobileOptimizations();
 });
 
 function initializeGalleryAnimations() {
@@ -33,16 +33,79 @@ function initializeGalleryAnimations() {
 }
 
 function initializeFeaturedGallery() {
-    // Featured gallery images - you can replace these with your actual featured images
+    // Featured gallery images - using local images from 'featured' folder - all 72 images
     const featuredImages = [
-        'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop'
+        'images/featured/Featured 01.jpg',
+        'images/featured/Featured 02.jpg',
+        'images/featured/Featured 03.jpg',
+        'images/featured/Featured 04.jpg',
+        'images/featured/Featured 05.jpg',
+        'images/featured/Featured 06.jpg',
+        'images/featured/Featured 07.jpg',
+        'images/featured/Featured 08.jpg',
+        'images/featured/Featured 09.jpg',
+        'images/featured/Featured 10.jpg',
+        'images/featured/Featured 11.jpg',
+        'images/featured/Featured 12.jpg',
+        'images/featured/Featured 13.jpg',
+        'images/featured/Featured 14.jpg',
+        'images/featured/Featured 15.jpg',
+        'images/featured/Featured 16.jpg',
+        'images/featured/Featured 17.jpg',
+        'images/featured/Featured 18.jpg',
+        'images/featured/Featured 19.jpg',
+        'images/featured/Featured 20.jpg',
+        'images/featured/Featured 21.jpg',
+        'images/featured/Featured 22.jpg',
+        'images/featured/Featured 23.jpg',
+        'images/featured/Featured 24.jpg',
+        'images/featured/Featured 25.jpg',
+        'images/featured/Featured 26.jpg',
+        'images/featured/Featured 27.jpg',
+        'images/featured/Featured 28.jpg',
+        'images/featured/Featured 29.jpg',
+        'images/featured/Featured 30.jpg',
+        'images/featured/Featured 31.jpg',
+        'images/featured/Featured 32.jpg',
+        'images/featured/Featured 33.jpg',
+        'images/featured/Featured 34.jpg',
+        'images/featured/Featured 35.jpg',
+        'images/featured/Featured 36.jpg',
+        'images/featured/Featured 37.jpg',
+        'images/featured/Featured 38.jpg',
+        'images/featured/Featured 39.jpg',
+        'images/featured/Featured 40.jpg',
+        'images/featured/Featured 41.jpg',
+        'images/featured/Featured 42.jpg',
+        'images/featured/Featured 43.jpg',
+        'images/featured/Featured 44.jpg',
+        'images/featured/Featured 45.jpg',
+        'images/featured/Featured 46.jpg',
+        'images/featured/Featured 47.jpg',
+        'images/featured/Featured 48.jpg',
+        'images/featured/Featured 49.jpg',
+        'images/featured/Featured 50.jpg',
+        'images/featured/Featured 51.jpg',
+        'images/featured/Featured 52.jpg',
+        'images/featured/Featured 53.jpg',
+        'images/featured/Featured 54.jpg',
+        'images/featured/Featured 55.jpg',
+        'images/featured/Featured 56.jpg',
+        'images/featured/Featured 57.jpg',
+        'images/featured/Featured 58.jpg',
+        'images/featured/Featured 59.jpg',
+        'images/featured/Featured 60.jpg',
+        'images/featured/Featured 61.jpg',
+        'images/featured/Featured 62.jpg',
+        'images/featured/Featured 63.jpg',
+        'images/featured/Featured 64.jpg',
+        'images/featured/Featured 65.jpg',
+        'images/featured/Featured 66.jpg',
+        'images/featured/Featured 67.jpg',
+        'images/featured/Featured 68.jpg',
+        'images/featured/Featured 69.jpg',
+        'images/featured/Featured 70.jpg',
+        'images/featured/Featured 71.jpg'
     ];
 
     const galleryGrid = document.getElementById('galleryGrid');
@@ -57,42 +120,144 @@ function initializeFeaturedGallery() {
     let currentIndex = 0;
     let isPlaying = true;
     let slideInterval;
+    let isMobile = window.innerWidth <= 768;
+    let usedImages = new Set(); // Track which images we've shown
 
-    // Create gallery items
-    function createGalleryItems(startIndex = 0) {
-        galleryGrid.innerHTML = '';
+    // Adjust for mobile display
+    const getImagesPerView = () => window.innerWidth <= 768 ? 1 : 4;
 
-        // Show 4 images at a time
-        for (let i = 0; i < 4; i++) {
-            const imageIndex = (startIndex + i) % featuredImages.length;
-            const galleryItem = document.createElement('div');
-            galleryItem.className = 'gallery-item';
-            galleryItem.innerHTML = `<img src="${featuredImages[imageIndex]}" alt="Featured Work ${imageIndex + 1}" loading="lazy">`;
-            galleryGrid.appendChild(galleryItem);
+    // Get random images without repeating until all have been shown
+    function getRandomImageIndices(count) {
+        const indices = [];
+        const availableImages = [];
+
+        // If we've shown all images, reset the used set
+        if (usedImages.size >= featuredImages.length) {
+            usedImages.clear();
         }
 
-        // Trigger animation
+        // Create array of available image indices
+        for (let i = 0; i < featuredImages.length; i++) {
+            if (!usedImages.has(i)) {
+                availableImages.push(i);
+            }
+        }
+
+        // If we don't have enough available images, add some back
+        if (availableImages.length < count) {
+            usedImages.clear();
+            for (let i = 0; i < featuredImages.length; i++) {
+                availableImages.push(i);
+            }
+        }
+
+        // Randomly select the required number of images
+        for (let i = 0; i < count && availableImages.length > 0; i++) {
+            const randomIndex = Math.floor(Math.random() * availableImages.length);
+            const selectedIndex = availableImages.splice(randomIndex, 1)[0];
+            indices.push(selectedIndex);
+            usedImages.add(selectedIndex);
+        }
+
+        return indices;
+    }
+
+    // Simple, fast image creation with random selection
+    function createGalleryItems() {
+        const imagesPerView = getImagesPerView();
+        galleryGrid.innerHTML = '';
+
+        // Get random image indices
+        const randomIndices = getRandomImageIndices(imagesPerView);
+
+        randomIndices.forEach((imageIndex, i) => {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+
+            const img = document.createElement('img');
+            img.src = featuredImages[imageIndex];
+            img.alt = `Featured Work ${imageIndex + 1}`;
+
+            // Optimize for faster loading
+            img.loading = 'eager';
+            img.decoding = 'async';
+            img.fetchPriority = 'high';
+
+            // Add simple error handling
+            img.onerror = function () {
+                this.style.display = 'none';
+                galleryItem.innerHTML = `
+                    <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: #666; text-align: center;">
+                        <div>
+                            <div>📷</div>
+                            <div style="font-size: 12px; margin-top: 8px;">Image ${imageIndex + 1}</div>
+                            <div style="font-size: 10px;">Loading...</div>
+                        </div>
+                    </div>
+                `;
+
+                // Retry loading after a delay
+                setTimeout(() => {
+                    const retryImg = document.createElement('img');
+                    retryImg.src = featuredImages[imageIndex];
+                    retryImg.style.cssText = 'max-width: 100%; max-height: 100%; object-fit: contain;';
+                    retryImg.onload = () => {
+                        galleryItem.innerHTML = '';
+                        galleryItem.appendChild(retryImg);
+                    };
+                }, 2000);
+            };
+
+            galleryItem.appendChild(img);
+            galleryGrid.appendChild(galleryItem);
+        });
+
+        // Simple animation trigger
         setTimeout(() => {
-            galleryGrid.querySelectorAll('.gallery-item').forEach(item => {
-                item.classList.add('visible');
+            galleryGrid.querySelectorAll('.gallery-item').forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add('visible');
+                }, index * 100);
             });
         }, 100);
     }
 
-    // Auto-advance slideshow
+    // Slower slideshow timing with random images
     function startSlideshow() {
         if (slideInterval) clearInterval(slideInterval);
+
+        const intervalTime = isMobile ? 15000 : 12000; // Very slow - 12-15 seconds
+
         slideInterval = setInterval(() => {
             if (isPlaying) {
-                currentIndex = (currentIndex + 4) % featuredImages.length;
-                createGalleryItems(currentIndex);
+                createGalleryItems(); // No parameters needed - always random
             }
-        }, 4000); // Change every 4 seconds
+        }, intervalTime);
     }
 
-    // Initialize with first set of images
-    createGalleryItems(currentIndex);
+    // Handle window resize
+    function handleResize() {
+        const wasMobile = isMobile;
+        isMobile = window.innerWidth <= 768;
+
+        if (wasMobile !== isMobile) {
+            createGalleryItems(); // Recreate with new layout
+            if (isPlaying) {
+                startSlideshow();
+            }
+        }
+    }
+
+    // Initialize immediately with random images
+    createGalleryItems();
     startSlideshow();
+
+    // Add resize listener with debounce
+    let resizeTimeout;
+    window.addEventListener('resize', function () {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(handleResize, 250);
+    });
 
     // Control button event listeners
     pauseBtn.addEventListener('click', function () {
@@ -108,70 +273,18 @@ function initializeFeaturedGallery() {
     });
 
     nextBtn.addEventListener('click', function () {
-        currentIndex = (currentIndex + 4) % featuredImages.length;
-        createGalleryItems(currentIndex);
-
-        // Reset the slideshow timer
+        createGalleryItems(); // Show new random images
         if (isPlaying) {
-            startSlideshow();
+            startSlideshow(); // Reset timer
         }
     });
 
     prevBtn.addEventListener('click', function () {
-        currentIndex = (currentIndex - 4 + featuredImages.length) % featuredImages.length;
-        createGalleryItems(currentIndex);
-
-        // Reset the slideshow timer
+        createGalleryItems(); // Show new random images  
         if (isPlaying) {
-            startSlideshow();
+            startSlideshow(); // Reset timer
         }
     });
-}
-
-function loadCategoryPreviews() {
-    // Google Drive folder IDs - REPLACE THESE WITH YOUR ACTUAL FOLDER IDs
-    const categoryFolders = {
-        'sports': 'YOUR_SPORTS_FOLDER_ID',        // Replace with your Sports folder ID
-        'concerts': 'YOUR_CONCERTS_FOLDER_ID',    // Replace with your Concerts folder ID
-        'nature': 'YOUR_NATURE_FOLDER_ID',        // Replace with your Nature folder ID
-        'architectural': 'YOUR_ARCHITECTURAL_FOLDER_ID', // Replace with your Architectural folder ID
-        'animals': 'YOUR_ANIMALS_FOLDER_ID',      // Replace with your Animals folder ID
-        'portraits': 'YOUR_PORTRAITS_FOLDER_ID'   // Replace with your Portraits folder ID
-    };
-
-    // Update category card images with latest from Google Drive
-    Object.keys(categoryFolders).forEach(category => {
-        updateCategoryPreview(category, categoryFolders[category]);
-    });
-}
-
-async function updateCategoryPreview(category, folderId) {
-    try {
-        // For now, we'll use placeholder logic
-        // In production, this would fetch from Google Drive API
-
-        if (!folderId || folderId.startsWith('YOUR_')) {
-            // Keep existing placeholder images
-            return;
-        }
-
-        // TODO: Implement Google Drive API call
-        // const latestImage = await getLatestImageFromDrive(folderId);
-        // updateCategoryCardImage(category, latestImage);
-
-    } catch (error) {
-        console.error(`Error updating ${category} preview:`, error);
-    }
-}
-
-function updateCategoryCardImage(category, imageUrl) {
-    const categoryCard = document.querySelector(`[data-category="${category}"]`);
-    if (categoryCard) {
-        const img = categoryCard.querySelector('.category-image img');
-        if (img) {
-            img.src = imageUrl;
-        }
-    }
 }
 
 function initializeNavigation() {
@@ -199,6 +312,44 @@ function initializeNavigation() {
             link.classList.add('active');
         }
     });
+}
+
+function initializeMobileOptimizations() {
+    // Prevent zoom on input focus (if you have forms)
+    if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+        const viewport = document.querySelector('meta[name=viewport]');
+        if (viewport) {
+            viewport.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+        }
+    }
+
+    // Optimize all images for mobile
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        if (!img.hasAttribute('loading')) {
+            img.loading = 'lazy';
+        }
+        if (!img.hasAttribute('decoding')) {
+            img.decoding = 'async';
+        }
+
+        // Add error handling to all images
+        img.onerror = function () {
+            console.log('Image failed to load:', this.src);
+            this.style.backgroundColor = '#333';
+        };
+    });
+
+    // Handle touch events for better mobile interaction
+    document.addEventListener('touchstart', function () { }, { passive: true });
+    document.addEventListener('touchmove', function () { }, { passive: true });
+
+    // Prevent rubber band scrolling on iOS
+    document.addEventListener('touchmove', function (e) {
+        if (e.target.closest('.gallery-item, .category-card')) {
+            return;
+        }
+    }, { passive: false });
 }
 
 // Legacy gallery controls for other pages
@@ -232,13 +383,7 @@ if (controls.length > 0) {
     });
 }
 
-// Function to manually refresh gallery from Google Drive
-window.refreshGalleryFromDrive = function () {
-    loadCategoryPreviews();
-
-    // If we're on a gallery page, refresh that too
-    if (document.querySelector('.category-gallery')) {
-        const gallery = new DriveGallery();
-        gallery.initializePage();
-    }
-};
+// Add performance monitoring for mobile
+if (window.performance && window.performance.mark) {
+    window.performance.mark('mobile-optimizations-complete');
+}

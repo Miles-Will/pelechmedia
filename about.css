@@ -9,7 +9,6 @@
     display: grid;
     grid-template-columns: 1fr 400px;
     gap: 80px;
-    margin-bottom: 100px;
     align-items: start;
 }
 
@@ -30,29 +29,6 @@
     color: #cccccc;
     margin-bottom: 30px;
     font-weight: 300;
-}
-
-.philosophy {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 40px;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 40px;
-}
-
-.philosophy h3 {
-    font-size: 24px;
-    font-weight: 300;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-    color: #ffffff;
-}
-
-.philosophy p {
-    font-style: italic;
-    font-size: 16px;
-    color: #aaaaaa;
-    margin-bottom: 0;
 }
 
 .about-image {
@@ -96,15 +72,18 @@
     transform: scale(1.05);
 }
 
-.skills-section {
-    margin-bottom: 100px;
+/* Equipment Section */
+.equipment-section {
+    padding: 100px 40px;
+    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.skills-section h2 {
+.equipment-section h2 {
     font-size: 48px;
     font-weight: 100;
     letter-spacing: 2px;
-    margin-bottom: 60px;
+    margin-bottom: 20px;
     text-align: center;
     background: linear-gradient(45deg, #ffffff, #888888);
     -webkit-background-clip: text;
@@ -112,78 +91,110 @@
     background-clip: text;
 }
 
-.skills-grid {
+.equipment-intro {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #cccccc;
+    text-align: center;
+    margin-bottom: 60px;
+    font-weight: 300;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.equipment-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.skill-item {
-    background: rgba(255, 255, 255, 0.03);
-    padding: 40px;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+.equipment-category {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 30px;
     transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
 }
 
-.skill-item:hover {
+.equipment-category:hover {
     background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
     transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 }
 
-.skill-item h3 {
-    font-size: 20px;
+.equipment-category h3 {
+    font-size: 24px;
     font-weight: 300;
     letter-spacing: 1px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     color: #ffffff;
+    text-align: center;
+    position: relative;
+    padding-bottom: 15px;
 }
 
-.skill-item p {
+.equipment-category h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(45deg, #ffffff, #888888);
+}
+
+.equipment-list {
+    list-style: none;
+    padding: 0;
+}
+
+.equipment-list li {
     font-size: 16px;
     line-height: 1.6;
     color: #cccccc;
-    margin: 0;
-}
-
-.awards-section h2 {
-    font-size: 48px;
-    font-weight: 100;
-    letter-spacing: 2px;
-    margin-bottom: 60px;
-    text-align: center;
-    background: linear-gradient(45deg, #ffffff, #888888);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.awards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-}
-
-.award-item {
-    text-align: center;
-    padding: 30px;
-    background: rgba(255, 255, 255, 0.02);
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.award-item h3 {
-    font-size: 18px;
+    margin-bottom: 15px;
     font-weight: 300;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.equipment-list li strong {
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.spec-details {
+    font-size: 14px;
+    color: #999999;
+    font-weight: 300;
+    line-height: 1.4;
+    margin-top: 4px;
+    display: block;
+}
+
+.equipment-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #888888;
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.equipment-list li:hover {
     color: #ffffff;
 }
 
-.award-item p {
-    font-size: 14px;
-    color: #aaaaaa;
-    margin: 0;
+.equipment-list li:last-child {
+    margin-bottom: 0;
 }
 
 /* About page responsive design */
@@ -191,7 +202,6 @@
     .about-grid {
         grid-template-columns: 1fr;
         gap: 40px;
-        margin-bottom: 60px;
     }
 
     .about-image img {
@@ -199,23 +209,58 @@
         /* Smaller max height on mobile */
     }
 
-    .skills-grid,
-    .awards-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .about-text h2,
-    .skills-section h2,
-    .awards-section h2 {
+    .about-text h2 {
         font-size: 32px;
     }
 
-    .philosophy {
-        padding: 25px;
+    .equipment-section {
+        padding: 60px 20px;
     }
 
-    .skill-item {
-        padding: 25px;
+    .equipment-section h2 {
+        font-size: 32px;
+        margin-bottom: 15px;
+    }
+
+    .equipment-intro {
+        font-size: 16px;
+        margin-bottom: 40px;
+        padding: 0 20px;
+    }
+
+    .equipment-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .equipment-category {
+        padding: 25px 20px;
+    }
+
+    .equipment-category h3 {
+        font-size: 20px;
+    }
+
+    .equipment-list li {
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-content {
+        padding: 60px 20px;
+    }
+
+    .equipment-section h2 {
+        font-size: 28px;
+    }
+
+    .equipment-category h3 {
+        font-size: 18px;
+    }
+
+    .equipment-list li {
+        font-size: 14px;
     }
 }

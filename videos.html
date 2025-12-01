@@ -5,6 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Gallery | Pelech Media</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y995WF2Q0B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-Y995WF2Q0B');
+    </script>
+
     <link rel="stylesheet" href="base.css">
     <link rel="stylesheet" href="gallery.css">
     <link rel="stylesheet" href="videos.css">
@@ -13,7 +23,10 @@
 <body>
     <nav>
         <div class="nav-container">
-            <div class="logo">Pelech Media</div>
+            <a href="index.html" class="logo">
+                <div class="logo-icon"></div>
+                <span class="logo-text">Pelech Media</span>
+            </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#gallery" class="active">Gallery</a></li>
@@ -27,7 +40,6 @@
         style="background-image: linear-gradient(135deg, rgba(10, 10, 10, 0.7) 0%, rgba(26, 26, 26, 0.7) 100%), url('images/video-hero.jpg'); background-size: cover; background-position: center center; background-repeat: no-repeat;">
         <div class="hero-content">
             <h1>VIDEO GALLERY</h1>
-            <p>Bringing stories to life through cinematic storytelling and motion</p>
         </div>
     </section>
 
@@ -200,9 +212,9 @@
             </div>
 
             <div class="gallery-navigation">
-                <a href="architectural-gallery.html" class="nav-link prev">← Architectural Photography</a>
+                <a href="concerts.html" class="nav-link prev">← Concert Photography</a>
                 <a href="index.html#gallery" class="nav-link home">Back to Gallery</a>
-                <a href="nature.html" class="nav-link next">Nature Photography →</a>
+                <a href="weddings.html" class="nav-link next">Wedding Photography →</a>
             </div>
         </div>
     </section>
@@ -239,9 +251,6 @@
             </div>
         </div>
     </footer>
-
-    <script src="script.js"></script>
-    <script src="videos.js"></script>
 </body>
 
 </html>

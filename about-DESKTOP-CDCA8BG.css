@@ -1,0 +1,165 @@
+/* About page specific styles */
+
+/* About Content */
+.about-content {
+    padding: 100px 40px;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 80px;
+    margin-bottom: 100px;
+    align-items: start;
+}
+
+.about-text h2 {
+    font-size: 48px;
+    font-weight: 100;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    background: linear-gradient(45deg, #ffffff, #888888);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.about-text p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #cccccc;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.philosophy {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 40px;
+}
+
+.philosophy h3 {
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.philosophy p {
+    font-style: italic;
+    font-size: 16px;
+    color: #aaaaaa;
+    margin-bottom: 0;
+}
+
+.about-image {
+    position: relative;
+}
+
+/* FIXED IMAGE STYLES - This is the main fix */
+.about-image img {
+    width: 100%;
+    height: auto;
+    /* Changed from fixed 500px height */
+    object-fit: contain;
+    /* Changed from 'cover' to 'contain' to show full image */
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    max-height: 600px;
+    /* Optional: prevents image from getting too tall */
+}
+
+/* Alternative option - uncomment if you prefer a specific aspect ratio:
+.about-image img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+*/
+
+/* Alternative option - uncomment for natural image proportions:
+.about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+*/
+
+.about-image:hover img {
+    transform: scale(1.05);
+}
+
+.awards-section h2 {
+    font-size: 48px;
+    font-weight: 100;
+    letter-spacing: 2px;
+    margin-bottom: 60px;
+    text-align: center;
+    background: linear-gradient(45deg, #ffffff, #888888);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.awards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.award-item {
+    text-align: center;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.award-item h3 {
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.award-item p {
+    font-size: 14px;
+    color: #aaaaaa;
+    margin: 0;
+}
+
+/* About page responsive design */
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin-bottom: 60px;
+    }
+
+    .about-image img {
+        max-height: 400px;
+        /* Smaller max height on mobile */
+    }
+
+    .awards-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .about-text h2,
+    .awards-section h2 {
+        font-size: 32px;
+    }
+
+    .philosophy {
+        padding: 25px;
+    }
+}

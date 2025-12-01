@@ -5,6 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pelech Media | Photography Portfolio</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y995WF2Q0B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-Y995WF2Q0B');
+    </script>
+
     <link rel="stylesheet" href="base.css">
     <link rel="stylesheet" href="index.css">
 </head>
@@ -12,10 +22,12 @@
 <body>
     <nav>
         <div class="nav-container">
-            <div class="logo">Pelech Media</div>
+            <a href="index.html" class="logo">
+                <div class="logo-icon"></div>
+            </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -23,10 +35,11 @@
     </nav>
 
     <section class="hero" id="home">
+        <img src="images/CP.jpeg" alt="" class="hero-background-image">
         <div class="hero-content">
             <h1>PELECH MEDIA</h1>
             <p>Capturing all of life's moments</p>
-            <a href="#gallery" class="cta-button">VIEW GALLERY</a>
+            <a href="portfolio.html" class="cta-button">VIEW PORTFOLIO</a>
         </div>
     </section>
 
@@ -43,102 +56,13 @@
                 <button class="control-btn" id="prevBtn">PREVIOUS</button>
             </div>
         </div>
-
-        <h2 class="section-title">PORTFOLIO</h2>
-
-        <!-- Photography Categories -->
-        <div class="categories-grid">
-            <div class="category-card" data-category="sports">
-                <div class="category-image">
-                    <img src="images/sports-hero.JPG" alt="Sports Photography" loading="lazy">
-                </div>
-                <div class="category-content">
-                    <h3><a href="sports.html">Sports Photography</a></h3>
-                    <p>Official photographer for Stalybridge Celtic, capturing powerful match moments and
-                        behind-the-scenes action through dynamic, storytelling sports imagery.</p>
-                    <span class="view-gallery">View Gallery →</span>
-                </div>
-            </div>
-
-            <div class="category-card" data-category="concerts">
-                <div class="category-image">
-                    <img src="images/concert.JPG" alt="Concert Photography" loading="lazy">
-                </div>
-                <div class="category-content">
-                    <h3><a href="concerts.html">Concert Photography</a></h3>
-                    <p>Capturing the rhythm, energy, and emotion of live music, from electrifying performances to
-                        intimate backstage moments.</p>
-                    <span class="view-gallery">View Gallery →</span>
-                </div>
-            </div>
-
-            <div class="category-card" data-category="videos">
-                <div class="category-image">
-                    <img src="images/video-hero.jpg" alt="Video Gallery" loading="lazy">
-                </div>
-                <div class="category-content">
-                    <h3><a href="videos.html">Video Gallery</a></h3>
-                    <p>Cinematic storytelling through motion, from sports highlights to documentary features and
-                        commercial productions.</p>
-                    <span class="view-gallery">View Gallery →</span>
-                </div>
-            </div>
-
-            <div class="category-card" data-category="nature">
-                <div class="category-image">
-                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop"
-                        alt="Nature Photography" loading="lazy">
-                </div>
-                <div class="category-content">
-                    <h3><a href="nature.html">Nature Photography</a></h3>
-                    <p>Exploring the beauty and power of nature through landscapes and wildlife, capturing raw, often
-                        unseen moments in the wild</p>
-                    <span class="view-gallery">View Gallery →</span>
-                </div>
-            </div>
-
-            <div class="category-card" data-category="animals">
-                <div class="category-image">
-                    <img src="images/animal.JPG" alt="Animal Photography" loading="lazy">
-                </div>
-                <div class="category-content">
-                    <h3><a href="animals.html">Animal Photography</a></h3>
-                    <p>Wildlife in their natural habitat, capturing personality and behavior</p>
-                    <span class="view-gallery">View Gallery →</span>
-                </div>
-            </div>
-
-            <div class="category-card" data-category="portraits">
-                <div class="category-image">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop&crop=face"
-                        alt="Portrait Photography" loading="lazy">
-                </div>
-                <div class="category-content">
-                    <h3><a href="portraits.html">Portrait Photography</a></h3>
-                    <p>Individual character, emotion, and the unique story each person tells</p>
-                    <span class="view-gallery">View Gallery →</span>
-                </div>
-            </div>
-
-            <div class="category-card" data-category="architecture">
-                <div class="category-image">
-                    <img src="images/architect.JPG" alt="Architecture Photography" loading="lazy">
-                </div>
-                <div class="category-content">
-                    <h3><a href="architectural-gallery.html">Architecture Photography</a></h3>
-                    <p>Geometric beauty, structural design, and the interplay of light and shadow in built environments
-                    </p>
-                    <span class="view-gallery">View Gallery →</span>
-                </div>
-            </div>
-        </div>
     </section>
 
     <footer>
         <div class="footer-content">
             <div class="footer-links">
                 <a href="index.html">Home</a>
-                <a href="#gallery">Gallery</a>
+                <a href="portfolio.html">Portfolio</a>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
             </div>

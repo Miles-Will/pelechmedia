@@ -1,10 +1,20 @@
-il<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Pelech Media</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y995WF2Q0B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-Y995WF2Q0B');
+    </script>
+
     <link rel="stylesheet" href="base.css">
     <link rel="stylesheet" href="contact.css">
 </head>
@@ -12,10 +22,12 @@ il<!DOCTYPE html>
 <body>
     <nav>
         <div class="nav-container">
-            <div class="logo">Pelech Media</div>
+            <a href="index.html" class="logo">
+                <div class="logo-icon"></div>
+            </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#gallery">Gallery</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html" class="active">Contact</a></li>
             </ul>
@@ -39,14 +51,6 @@ il<!DOCTYPE html>
                         project, let's start a conversation.</p>
 
                     <div class="contact-details">
-                        <div class="contact-item">
-                            <h3>Email</h3>
-                            <p><a href="mailto:connor.pelech@pelechmedia.com">email address coming soon</a></p>
-                        </div>
-                        <div class="contact-item">
-                            <h3>Phone</h3>
-                            <p><a href="tel:+1234567890">0123456789</a></p>
-                        </div>
                         <div class="contact-item">
                             <h3>Location</h3>
                             <p>Manchester, UK<br>Available for travel</p>
@@ -73,94 +77,26 @@ il<!DOCTYPE html>
                     </div>
                 </div>
 
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Name *</label>
-                            <input type="text" id="name" name="name" required>
+                <div class="additional-content">
+                    <div class="availability-info">
+                        <h3>Availability & Booking</h3>
+                        <div class="booking-details">
+                            <div class="booking-item">
+                                <h4>Best Way to Reach Me</h4>
+                                <p>Connect with me through my social media channels below. I'm most active on Instagram
+                                    and respond quickly to direct messages and comments.</p>
+                            </div>
+                            <div class="booking-item">
+                                <h4>Advance Booking</h4>
+                                <p>For weddings and major events, I recommend booking 2-6 months in advance. Portrait
+                                    sessions can usually be scheduled within 2-4 weeks.</p>
+                            </div>
+                            <div class="booking-item">
+                                <h4>Travel</h4>
+                                <p>Based in Manchester but available for shoots throughout the UK. Travel costs included
+                                    in quotes for locations outside Greater Manchester.</p>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                        <div class="form-group">
-                            <label for="service">Service Interested In</label>
-                            <select id="service" name="service">
-                                <option value="">Select a service</option>
-                                <option value="wedding">Wedding Photography</option>
-                                <option value="portrait">Portrait Session</option>
-                                <option value="commercial">Commercial Photography</option>
-                                <option value="event">Event Photography</option>
-                                <option value="landscape">Landscape Photography</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="date">Preferred Date</label>
-                            <input type="date" id="date" name="date">
-                        </div>
-                        <div class="form-group">
-                            <label for="budget">Budget Range</label>
-                            <select id="budget" name="budget">
-                                <option value="">Select budget range</option>
-                                <option value="under-800">Under £800</option>
-                                <option value="800-2000">£800 - £2,000</option>
-                                <option value="2000-4000">£2,000 - £4,000</option>
-                                <option value="4000-plus">£4,000+</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Tell me about your project *</label>
-                            <textarea id="message" name="message" rows="6"
-                                placeholder="Describe your vision, timeline, and any specific requirements..."
-                                required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="faq-section">
-                <h2>Frequently Asked Questions</h2>
-                <div class="faq-grid">
-                    <div class="faq-item">
-                        <h3>What's your photography style?</h3>
-                        <p>I specialize in a blend of photojournalistic and artistic styles, capturing authentic moments
-                            while creating visually stunning compositions. My approach is natural and unobtrusive,
-                            allowing genuine emotions to shine through.</p>
-                    </div>
-                    <div class="faq-item">
-                        <h3>How far in advance should I book?</h3>
-                        <p>For weddings and major events, I recommend booking 6-12 months in advance. For portrait
-                            sessions and smaller projects, 2-4 weeks notice is usually sufficient, though I can
-                            sometimes accommodate shorter timelines.</p>
-                    </div>
-                    <div class="faq-item">
-                        <h3>Do you travel for shoots?</h3>
-                        <p>Absolutely! I love destination photography and am available for travel worldwide. Travel
-                            expenses are typically included in the project quote for locations outside the local area.
-                        </p>
-                    </div>
-                    <div class="faq-item">
-                        <h3>What's included in your packages?</h3>
-                        <p>Each package is customized to your specific needs, but typically includes pre-shoot
-                            consultation, the photography session, professional editing, and delivery of high-resolution
-                            images via online gallery.</p>
-                    </div>
-                    <div class="faq-item">
-                        <h3>How long until I receive my photos?</h3>
-                        <p>Turnaround time varies by project type. Portrait sessions are typically delivered within 1-2
-                            weeks, while weddings and larger events may take 4-6 weeks for complete editing and
-                            delivery.</p>
-                    </div>
-                    <div class="faq-item">
-                        <h3>Do you offer prints?</h3>
-                        <p>Yes! I offer professional printing services through trusted labs, including canvas prints,
-                            albums, and fine art prints. These can be discussed during our consultation.</p>
                     </div>
                 </div>
             </div>
@@ -171,7 +107,7 @@ il<!DOCTYPE html>
         <div class="footer-content">
             <div class="footer-links">
                 <a href="index.html">Home</a>
-                <a href="index.html#gallery">Gallery</a>
+                <a href="portfolio.html">Portfolio</a>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
             </div>

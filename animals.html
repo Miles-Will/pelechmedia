@@ -5,6 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animal Photography | Pelech Media</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y995WF2Q0B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-Y995WF2Q0B');
+    </script>
+
     <link rel="stylesheet" href="base.css">
     <link rel="stylesheet" href="gallery.css">
 </head>
@@ -12,10 +22,12 @@
 <body>
     <nav>
         <div class="nav-container">
-            <div class="logo">Pelech Media</div>
+            <a href="index.html" class="logo">
+                <div class="logo-icon"></div>
+            </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#gallery" class="active">Gallery</a></li>
+                <li><a href="portfolio.html" class="active">Portfolio</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -26,14 +38,13 @@
         style="background-image: linear-gradient(135deg, rgba(10, 10, 10, 0.7) 0%, rgba(26, 26, 26, 0.7) 100%), url('animal.JPG'); background-size: cover; background-position: center center; background-repeat: no-repeat;">
         <div class="hero-content">
             <h1>ANIMAL PHOTOGRAPHY</h1>
-            <p>Wildlife in their natural habitat, capturing personality and behavior</p>
         </div>
     </section>
 
     <section class="category-gallery">
         <div class="container">
             <div class="breadcrumb">
-                <a href="index.html">Home</a> / <a href="index.html#gallery">Gallery</a> / <span>Animal
+                <a href="index.html">Home</a> / <a href="portfolio.html">Portfolio</a> / <span>Animal
                     Photography</span>
             </div>
 
@@ -50,7 +61,7 @@
 
             <div class="gallery-navigation">
                 <a href="nature.html" class="nav-link prev">← Nature Photography</a>
-                <a href="index.html#gallery" class="nav-link home">Back to Gallery</a>
+                <a href="portfolio.html" class="nav-link home">Back to Portfolio</a>
                 <a href="portraits.html" class="nav-link next">Portrait Photography →</a>
             </div>
         </div>
@@ -60,7 +71,7 @@
         <div class="footer-content">
             <div class="footer-links">
                 <a href="index.html">Home</a>
-                <a href="index.html#gallery">Gallery</a>
+                <a href="portfolio.html">Portfolio</a>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
             </div>
@@ -71,7 +82,7 @@
     </footer>
 
     <script src="script.js"></script>
-    <script src="gallery-category.js"></script>
+    <script src="animals-gallery.js"></script>
 </body>
 
 </html>

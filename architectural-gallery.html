@@ -5,6 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Architectural Photography | Pelech Media</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y995WF2Q0B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-Y995WF2Q0B');
+    </script>
+
     <link rel="stylesheet" href="base.css">
     <link rel="stylesheet" href="gallery.css">
 
@@ -13,10 +23,12 @@
 <body>
     <nav>
         <div class="nav-container">
-            <div class="logo">Pelech Media</div>
+            <a href="index.html" class="logo">
+                <div class="logo-icon"></div>
+            </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#gallery" class="active">Gallery</a></li>
+                <li><a href="portfolio.html" class="active">Portfolio</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -27,14 +39,13 @@
         style="background-image: linear-gradient(135deg, rgba(10, 10, 10, 0.7) 0%, rgba(26, 26, 26, 0.7) 100%), url('architect.JPG'); background-size: cover; background-position: center center; background-repeat: no-repeat;">
         <div class="hero-content">
             <h1>ARCHITECTURAL PHOTOGRAPHY</h1>
-            <p>Stunning buildings and structures showcasing design, form, and artistic vision</p>
         </div>
     </section>
 
     <section class="category-gallery">
         <div class="container">
             <div class="breadcrumb">
-                <a href="index.html">Home</a> / <a href="index.html#gallery">Gallery</a> / <span>Architectural
+                <a href="index.html">Home</a> / <a href="portfolio.html">Portfolio</a> / <span>Architectural
                     Photography</span>
             </div>
 
@@ -51,9 +62,9 @@
             </div>
 
             <div class="gallery-navigation">
-                <a href="concerts.html" class="nav-link prev">← Concert Photography</a>
-                <a href="index.html#gallery" class="nav-link home">Back to Gallery</a>
-                <a href="videos.html" class="nav-link next">Video Gallery →</a>
+                <a href="portraits.html" class="nav-link prev">← Portrait Photography</a>
+                <a href="portfolio.html" class="nav-link home">Back to Portfolio</a>
+                <a href="sports.html" class="nav-link next">Sports Photography →</a>
             </div>
         </div>
     </section>
@@ -62,7 +73,7 @@
         <div class="footer-content">
             <div class="footer-links">
                 <a href="index.html">Home</a>
-                <a href="index.html#gallery">Gallery</a>
+                <a href="portfolio.html">Portfolio</a>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
             </div>
@@ -73,7 +84,7 @@
     </footer>
 
     <script src="script.js"></script>
-    <script src="gallery-category.js"></script>
+    <script src="architectural-gallery.js"></script>
 </body>
 
 </html>

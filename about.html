@@ -5,6 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | Pelech Media</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y995WF2Q0B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-Y995WF2Q0B');
+    </script>
+
     <link rel="stylesheet" href="base.css">
     <link rel="stylesheet" href="about.css">
 </head>
@@ -12,10 +22,12 @@
 <body>
     <nav>
         <div class="nav-container">
-            <div class="logo">Pelech Media</div>
+            <a href="index.html" class="logo">
+                <div class="logo-icon"></div>
+            </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#gallery">Gallery</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="about.html" class="active">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -29,89 +41,131 @@
         </div>
     </section>
 
+    <section class="equipment-section">
+        <div class="container">
+            <h2>My Equipment</h2>
+            <p class="equipment-intro">The tools that help me capture every moment with precision and creativity.</p>
+
+            <div class="equipment-grid">
+                <div class="equipment-category">
+                    <h3>Cameras</h3>
+                    <ul class="equipment-list">
+                        <li>
+                            <strong>Nikon D5500</strong><br>
+                            <span class="spec-details">24.2MP DX CMOS • EXPEED 4 • ISO 100-25,600 • 5fps • 39-point AF •
+                                Touch Screen • Wi-Fi • No OLPF</span>
+                        </li>
+                        <li>
+                            <strong>Nikon D5300</strong><br>
+                            <span class="spec-details">24.2MP DX CMOS • EXPEED 4 • ISO 100-12,800 (25,600) • 5fps •
+                                39-point AF • Wi-Fi/GPS • No OLPF</span>
+                        </li>
+                        <li>
+                            <strong>Nikon D500</strong><br>
+                            <span class="spec-details">20.9MP DX CMOS • EXPEED 5 • ISO 100-51,200 (1,640,000) • 10fps •
+                                153-point AF • 4K Video • Wi-Fi/Bluetooth</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="equipment-category">
+                    <h3>Lenses</h3>
+                    <ul class="equipment-list">
+                        <li>
+                            <strong>Nikon AF-S DX Nikkor 18-300mm f/3.5-6.3G ED VR</strong><br>
+                            <span class="spec-details">All-in-One Zoom • Vibration Reduction • Extra-Low Dispersion
+                                Glass • Silent Wave Motor AF • DX Format</span>
+                        </li>
+                        <li>
+                            <strong>Tamron SP 150-600mm f/5-6.3 Di VC USD G2</strong><br>
+                            <span class="spec-details">Super-Telephoto Zoom • Vibration Compensation • Ultrasonic Silent
+                                Drive • Weather Sealed • Sports/Wildlife</span>
+                        </li>
+                        <li>
+                            <strong>Nikon AF-P DX Nikkor 18-55mm f/3.5-5.6G</strong><br>
+                            <span class="spec-details">Standard Zoom • Stepping Motor AF • Compact & Lightweight •
+                                General Purpose • DX Format</span>
+                        </li>
+                        <li>
+                            <strong>Tamron AF 70-300mm f/4-5.6 Di LD Macro</strong><br>
+                            <span class="spec-details">Telephoto Zoom • Low Dispersion Glass • 1:2 Macro Capability •
+                                Portraits/Sports • Full Frame Compatible</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="equipment-category">
+                    <h3>Action Camera</h3>
+                    <ul class="equipment-list">
+                        <li>
+                            <strong>GoPro Hero 10</strong><br>
+                            <span class="spec-details">23MP Photos • 5.3K60/4K120/2.7K240 Video • GP2 Processor •
+                                HyperSmooth 4.0 • Waterproof 33ft • Cloud Connected</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="equipment-category">
+                    <h3>Drone</h3>
+                    <ul class="equipment-list">
+                        <li>
+                            <strong>DJI Mini 2 Foldable Drone Quadcopter 3-Axis Gimbal with 4K Camera</strong><br>
+                            <span class="spec-details">12MP Photos • 4K30/2.7K60/1080p60 Video • OcuSync 2.0 • 31min
+                                Flight Time • 10km Range • 3-Axis Gimbal • Under 249g</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="equipment-category">
+                    <h3>Handheld Stabilizer</h3>
+                    <ul class="equipment-list">
+                        <li>
+                            <strong>DJI Osmo Mobile SE Gimbal</strong><br>
+                            <span class="spec-details">3-Axis Stabilization • ActiveTrack 6.0 • 8hr Battery • Magnetic
+                                Phone Clamp • Bluetooth 5.1 • Foldable Design • Up to 10.2oz Load</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="equipment-category">
+                    <h3>Memory Cards</h3>
+                    <ul class="equipment-list">
+                        <li>SanDisk 128GB Extreme PRO SDXC card V30 4K UHD 200 MB/s</li>
+                        <li>SanDisk 256GB Extreme microSDXC card V30 190 MB/s</li>
+                        <li>Lexar Professional SILVER Series 256GB CFexpress Card, Type B</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="about-content">
         <div class="container">
             <div class="about-grid">
                 <div class="about-text">
                     <h2>My Story</h2>
-                    <p>Welcome to my world of photography. I'm a passionate visual storyteller who believes that every
-                        moment holds the potential for something extraordinary. With over a decade of experience behind
-                        the lens, I've dedicated my life to capturing the beauty, emotion, and raw authenticity of the
-                        world around us.</p>
+                    <p>Photography has been part of my life for as long as I can remember. My dad always had a camera in
+                        hand, capturing everyday moments, and I was fascinated by the process from a young age. I always
+                        wanted to join in, and that curiosity only grew when my sister studied photography at college,
+                        her passion and creativity sparked something in me that never faded.</p>
 
-                    <p>My journey began with a simple curiosity about light and shadow, but it has evolved into a deep
-                        passion for preserving memories and telling stories that words cannot express. Whether I'm
-                        documenting intimate weddings, exploring breathtaking landscapes, or capturing the energy of
-                        urban life, my goal remains the same: to create images that resonate with the soul.</p>
+                    <p>I picked up my first camera at age 13, and what began as a hobby quickly became a lifelong
+                        obsession. Over the years, I've explored all forms of photography, from sports and portraits to
+                        landscapes, street scenes, and events.</p>
 
-                    <div class="philosophy">
-                        <h3>My Philosophy</h3>
-                        <p>"Photography is not just about capturing what you see, but revealing what you feel. Every
-                            image should tell a story, evoke an emotion, and create a connection between the viewer and
-                            the moment frozen in time."</p>
-                    </div>
+                    <p>I believe photography is a constantly evolving art, and I'm committed to pushing my creative
+                        boundaries and staying inspired.</p>
+
+                    <p>Today, I am the official photographer for Stalybridge Celtic Football Club. Capturing the energy
+                        of match days, the emotion of the players, and the spirit of the fans. My goal is to tell
+                        compelling visual stories that resonate with people, whether on the pitch or beyond.</p>
+
+                    <p>Photography, for me, is more than just taking pictures it's about preserving moments, sharing
+                        perspectives, and connecting with others through the lens.</p>
                 </div>
 
                 <div class="about-image">
                     <img src="images/about-image.JPG" alt="Photographer Portrait" loading="lazy">
-                </div>
-            </div>
-
-            <div class="skills-section">
-                <h2>Expertise</h2>
-                <div class="skills-grid">
-                    <div class="skill-item">
-                        <h3>Portrait Photography</h3>
-                        <p>Capturing the essence and personality of individuals through intimate and professional
-                            portrait sessions.</p>
-                    </div>
-                    <div class="skill-item">
-                        <h3>Landscape Photography</h3>
-                        <p>Exploring and documenting the natural world's beauty, from sweeping vistas to intimate nature
-                            scenes.</p>
-                    </div>
-                    <div class="skill-item">
-                        <h3>Wedding Photography</h3>
-                        <p>Preserving life's most precious moments with a blend of photojournalistic and artistic
-                            approaches.</p>
-                    </div>
-                    <div class="skill-item">
-                        <h3>Street Photography</h3>
-                        <p>Documenting urban life and human stories as they unfold in the authentic moments of everyday
-                            life.</p>
-                    </div>
-                    <div class="skill-item">
-                        <h3>Commercial Photography</h3>
-                        <p>Creating compelling visual content for brands, products, and businesses with professional
-                            precision.</p>
-                    </div>
-                    <div class="skill-item">
-                        <h3>Fine Art Photography</h3>
-                        <p>Expressing creativity and vision through artistic compositions that challenge and inspire
-                            viewers.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="awards-section">
-                <h2>Recognition</h2>
-                <div class="awards-grid">
-                    <div class="award-item">
-                        <h3>International Photography Awards</h3>
-                        <p>Winner - Nature Category (2024)</p>
-                    </div>
-                    <div class="award-item">
-                        <h3>Wedding Photography Association</h3>
-                        <p>Excellence Award (2023)</p>
-                    </div>
-                    <div class="award-item">
-                        <h3>National Geographic</h3>
-                        <p>Featured Photographer (2022)</p>
-                    </div>
-                    <div class="award-item">
-                        <h3>Fine Art Photography Society</h3>
-                        <p>Emerging Artist Award (2021)</p>
-                    </div>
                 </div>
             </div>
         </div>
@@ -121,7 +175,7 @@
         <div class="footer-content">
             <div class="footer-links">
                 <a href="index.html">Home</a>
-                <a href="index.html#gallery">Gallery</a>
+                <a href="portfolio.html">Portfolio</a>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
             </div>

@@ -1,19 +1,28 @@
 /* Index page specific styles */
 
-/* Hero Section */
+/* Hero Section - FIXED IMAGE DISPLAY */
 .hero {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(135deg, rgba(10, 10, 10, 0.7) 0%, rgba(26, 26, 26, 0.7) 100%), url('images/CP.jpeg');
-    background-size: cover;
-    background-position: center center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
     position: relative;
     overflow: hidden;
+    background: #0a0a0a;
+}
+
+/* Use the img element for better reliability */
+.hero-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    z-index: 1;
+    content: url('images/CP.jpeg');
 }
 
 .hero::before {
@@ -23,8 +32,16 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.5) 0%, rgba(26, 26, 26, 0.5) 100%);
+    z-index: 2;
     pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 800px;
+    padding: 0 40px;
 }
 
 /* Gallery Section */
@@ -32,18 +49,6 @@
     padding: 100px 40px;
     max-width: 1400px;
     margin: 0 auto;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 48px;
-    font-weight: 100;
-    letter-spacing: 3px;
-    margin-bottom: 80px;
-    background: linear-gradient(45deg, #ffffff, #888888);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
 
 /* Featured Work Section */
@@ -70,109 +75,6 @@
     margin-bottom: 40px;
 }
 
-/* Photography Categories */
-.categories-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    margin-bottom: 100px;
-    max-width: 1400px;
-    width: 100%;
-}
-
-.category-card {
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    cursor: pointer;
-}
-
-.category-card:hover {
-    transform: translateY(-10px);
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-.category-image {
-    position: relative;
-    height: 250px;
-    overflow: hidden;
-}
-
-.category-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.category-card:hover .category-image img {
-    transform: scale(1.1);
-}
-
-.category-image::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
-}
-
-.category-content {
-    padding: 30px;
-}
-
-.category-content h3 {
-    font-size: 24px;
-    font-weight: 300;
-    letter-spacing: 1px;
-    margin-bottom: 12px;
-}
-
-.category-content h3 a {
-    color: #ffffff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.category-content h3 a:hover {
-    background: linear-gradient(45deg, #ffffff, #cccccc);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.category-content p {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #cccccc;
-    margin-bottom: 20px;
-    font-weight: 300;
-}
-
-.view-gallery {
-    font-size: 14px;
-    color: #aaaaaa;
-    letter-spacing: 1px;
-    font-weight: 300;
-    transition: color 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.view-gallery:hover {
-    color: #ffffff;
-}
-
-.category-card:hover .view-gallery {
-    color: #ffffff;
-}
-
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -185,10 +87,21 @@
     overflow: hidden;
     aspect-ratio: 4/3;
     border-radius: 8px;
-    background: #1a1a1a;
+    background: transparent;
     transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     opacity: 0;
     transform: translateY(50px);
+    /* Better performance for mobile */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding: 10px;
+    /* ADDED: Gives images breathing room */
 }
 
 .gallery-item.visible {
@@ -197,14 +110,23 @@
 }
 
 .gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-width: 90%;
+    /* CHANGED: From 100% to 90% to show more of the image */
+    max-height: 90%;
+    /* CHANGED: From 100% to 90% to show more of the image */
+    width: auto;
+    height: auto;
+    object-fit: contain;
     transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* Better image quality on mobile */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .gallery-item:hover img {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .gallery-item::after {
@@ -221,6 +143,17 @@
 
 .gallery-item:hover::after {
     opacity: 1;
+}
+
+/* Add shimmer animation for loading placeholders */
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
 }
 
 /* Controls */
@@ -253,28 +186,8 @@
     border-color: rgba(255, 255, 255, 0.3);
 }
 
-/* Desktop and Large Screens */
-@media (min-width: 1200px) {
-    .hero {
-        background-attachment: fixed;
-        background-position: center top;
-    }
-}
-
 /* Tablet styles */
 @media (max-width: 1199px) and (min-width: 769px) {
-    .hero {
-        background-attachment: scroll;
-        background-position: center center;
-        background-size: cover;
-        height: 100vh;
-    }
-
-    .categories-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-    }
-
     .featured-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 25px;
@@ -285,16 +198,39 @@
     }
 }
 
-/* Mobile styles */
+/* Mobile styles - KEEP IMG ELEMENT VISIBLE */
 @media (max-width: 768px) {
     .hero {
-        background: linear-gradient(135deg, rgba(10, 10, 10, 0.7) 0%, rgba(26, 26, 26, 0.7) 100%), url('images/CP.jpeg');
-        background-position: center center;
-        background-attachment: scroll;
-        background-size: cover;
-        background-repeat: no-repeat;
         height: 100vh;
         min-height: 100vh;
+        min-height: -webkit-fill-available;
+    }
+
+    /* Switch to mobile image */
+    .hero-background-image {
+        content: url('images/con2.jpg');
+        display: block;
+    }
+
+    /* Adjust hero content for mobile */
+    .hero-content {
+        z-index: 3;
+        /* Ensure it's above the image */
+        max-width: 90%;
+        padding: 0 20px;
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+        margin-bottom: 15px;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+        letter-spacing: 1px;
+        margin-bottom: 30px;
     }
 
     .gallery-section {
@@ -305,33 +241,37 @@
         margin-bottom: 60px;
     }
 
+    /* Make featured grid single column on mobile for better image quality */
     .featured-grid {
         grid-template-columns: 1fr;
         gap: 20px;
+        max-width: 400px;
+        margin: 0 auto 40px auto;
     }
 
-    .categories-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        margin-bottom: 60px;
+    /* Ensure gallery items maintain aspect ratio */
+    .gallery-item {
+        aspect-ratio: unset;
+        /* Remove fixed aspect ratio on mobile */
+        min-height: 250px;
+        /* Set minimum height instead */
+        max-height: 400px;
+        /* Allow more height for portraits */
+        padding: 10px;
+        height: auto;
+        /* Let height adjust to content */
     }
 
-    .category-image {
-        height: 200px;
-    }
-
-    .category-content {
-        padding: 20px;
+    .gallery-item img {
+        max-width: 95%;
+        max-height: 95%;
+        width: auto;
+        height: auto;
     }
 
     .gallery-grid {
         grid-template-columns: 1fr;
         gap: 20px;
-    }
-
-    .section-title {
-        font-size: 32px;
-        margin-bottom: 50px;
     }
 
     .featured-title {
@@ -340,42 +280,40 @@
     }
 
     .gallery-controls {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
+        /* Keep horizontal on mobile */
+        justify-content: center;
         gap: 15px;
+        flex-wrap: wrap;
     }
 
     .control-btn {
-        width: 200px;
+        min-width: 80px;
+        padding: 10px 20px;
         text-align: center;
+        font-size: 14px;
     }
 }
 
 /* Very small mobile devices */
 @media (max-width: 480px) {
-    .hero {
-        background-size: cover;
-        background-position: center center;
-        min-height: 100vh;
+    .hero-background-image {
+        content: url('images/con2.jpg');
+        object-position: center center;
     }
 
     .hero-content h1 {
-        font-size: 2.5rem;
-        letter-spacing: 2px;
+        font-size: 2rem;
+        letter-spacing: 1px;
     }
 
     .hero-content p {
-        font-size: 16px;
-        letter-spacing: 1px;
+        font-size: 14px;
+        letter-spacing: 0.5px;
     }
 
     .gallery-section {
         padding: 40px 15px;
-    }
-
-    .section-title {
-        font-size: 28px;
-        letter-spacing: 2px;
     }
 
     .featured-title {
@@ -383,16 +321,25 @@
         letter-spacing: 1px;
     }
 
-    .category-content {
+    .gallery-item {
+        aspect-ratio: unset;
+        /* Remove fixed aspect ratio on very small screens too */
+        min-height: 200px;
+        max-height: 350px;
         padding: 15px;
+        height: auto;
     }
 
-    .category-content h3 {
-        font-size: 20px;
+    .gallery-item img {
+        max-width: 90%;
+        max-height: 90%;
+        width: auto;
+        height: auto;
     }
 
-    .category-content p {
-        font-size: 14px;
+    /* Ensure featured grid works well on very small screens */
+    .featured-grid {
+        max-width: 300px;
     }
 }
 
@@ -400,8 +347,55 @@
 @media (max-width: 768px) and (orientation: landscape) {
     .hero {
         height: 100vh;
-        background-attachment: scroll;
-        background-size: cover;
-        background-position: center center;
+        min-height: 100vh;
+    }
+
+    .hero-background-image {
+        content: url('images/con2.jpg');
+        object-position: center center;
+    }
+
+    .featured-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+    .hero {
+        min-height: -webkit-fill-available;
+        /* Force GPU acceleration for smoother performance */
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+
+    .gallery-item {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+
+    .gallery-item img {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+}
+
+/* Improve touch interactions */
+@media (hover: none) and (pointer: coarse) {
+    .hero {
+        /* Ensure touch interactions work smoothly */
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    .gallery-item:active {
+        transform: scale(0.98);
+    }
+
+    .control-btn:active {
+        transform: translateY(0);
+        background: rgba(255, 255, 255, 0.2);
     }
 }
